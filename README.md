@@ -21,7 +21,9 @@ This is a frontend web application, aimed at providing User-Interface for the JS
 
 ### Application screenshots:
 
-1. ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+1. Large Devices:
+  * ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewJson.png)
+3. ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 
 Link to [spaceXDataUI](https://spacexdata-ui.herokuapp.com/) deployed on `Heroku` 
