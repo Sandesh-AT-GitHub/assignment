@@ -8,11 +8,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      limit: 100,
       loading:true,
       data: [],
       filterData: [],
       index: 0,
-      limit: 30,
       trigger: false,
       viewToggle: true
     };

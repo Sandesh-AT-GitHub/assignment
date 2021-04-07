@@ -52,7 +52,7 @@ class Filter extends Component {
             </div>
             
             <div className="groupBtn">
-              <button onClick={() => this.props.setTrigger(false)}>close</button>
+              <button onClick={() => this.props.setTrigger()}>close</button>
               <button type="submit" value="Submit">submit</button>
             </div>
           </form>
