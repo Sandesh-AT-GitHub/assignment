@@ -47,7 +47,7 @@ class Filter extends Component {
             <div className="group">
               <label class="groupLabel">Launch Year</label>
                 <div className="groupInput">
-                <input className="start" type="number" name="input3" placeholder="Enter launch year" />
+                <input style={{width:"200px"}}className="start" type="number" name="input3" placeholder="Enter launch year" />
                 </div>
             </div>
             
