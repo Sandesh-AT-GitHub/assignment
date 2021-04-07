@@ -12,11 +12,7 @@ function ViewTable(props) {
           </tr>
           <tr>
             <td>mission_name</td>
-            <td>{
-             props.eachData.mission_id === null
-             ? props.eachData.mission_id
-             : "null"
-            }</td>
+            <td>{props.eachData.mission_name}</td>
           </tr>
           <tr>
             <td>mission_id</td>
@@ -242,7 +238,9 @@ function ViewTable(props) {
                 </tr>
                 <tr>
                     <td>fairings</td>
-                    <td>
+                    {(props.eachData.rocket.fairings === null)
+                    ?" "
+                    :<td>
                         <tr>
                             <td>reused</td>
                             <td>{props.eachData.rocket.fairings.reused}</td>
@@ -260,6 +258,7 @@ function ViewTable(props) {
                             <td>{props.eachData.rocket.fairings.ship}</td>
                         </tr>
                     </td>
+                    }
                 </tr>
 
             </td>
@@ -273,9 +272,96 @@ function ViewTable(props) {
             <td>{props.eachData.telemetry.flight_club}</td>
           </tr>
           <tr>
+            <td>launch_site</td>
+            <td>
+                <tr>
+                    <td>site_id</td>
+                    <td>{props.eachData.launch_site.site_id}</td>
+                </tr>
+                <tr>
+                    <td>site_name</td>
+                    <td>{props.eachData.launch_site.site_name}</td>
+                </tr>
+                <tr>
+                    <td>site_name_long</td>
+                    <td>{props.eachData.launch_site.site_name_long}</td>
+                </tr>
+            </td>
+          </tr>
+          <tr>
             <td>launch_success</td>
             <td>{props.eachData.launch_success}</td>
           </tr>
+          <tr>
+            <td>launch_failure_details</td>
+            {(props.eachData.launch_failure_details===undefined)
+            ?" "
+            :<td>
+                <tr>
+                    <td>site_id</td>
+                    <td>{props.eachData.launch_failure_details.time}</td>
+                </tr>
+                <tr>
+                    <td>altitude</td>
+                    <td>{props.eachData.launch_failure_details.altitude}</td>
+                </tr>
+                <tr>
+                    <td>reason</td>
+                    <td>{props.eachData.launch_failure_details.reason}</td>
+                </tr>
+            </td>
+            }
+          </tr>
+          <tr>
+            <td>links</td>
+            <td>
+                <tr>
+                    <td>mission_patch</td>
+                    <td><a href={props.eachData.links.mission_patch}>{props.eachData.links.mission_patch}</a></td>
+                </tr>
+                <tr>
+                    <td>mission_patch_small</td>
+                    <td><a href={props.eachData.links.mission_patch_small}>{props.eachData.links.mission_patch_small}</a></td>
+                </tr>
+                <tr>
+                    <td>reddit_campaign</td>
+                    <td><a href={props.eachData.links.reddit_campaign}>{props.eachData.links.reddit_campaign}</a></td>
+                </tr>
+                <tr>
+                    <td>reddit_launch</td>
+                    <td><a href={props.eachData.links.reddit_launch}>{props.eachData.links.reddit_launch}</a></td>
+                </tr>
+                <tr>
+                    <td>reddit_recovery</td>
+                    <td><a href={props.eachData.links.reddit_recovery}>{props.eachData.links.reddit_recovery}</a></td>
+                </tr>
+                <tr>
+                    <td>reddit_media</td>
+                    <td><a href={props.eachData.links.reddit_media}>{props.eachData.links.reddit_media}</a></td>
+                </tr>
+                <tr>
+                    <td>presskit</td>
+                    <td><a href={props.eachData.links.presskit}>{props.eachData.links.presskit}</a></td>
+                </tr>
+                <tr>
+                    <td>article_link</td>
+                    <td><a href={props.eachData.links.article_link}>{props.eachData.links.article_link}</a></td>
+                </tr>
+                <tr>
+                    <td>wikipedia</td>
+                    <td><a href={props.eachData.links.wikipedia}>{props.eachData.links.wikipedia}</a></td>
+                </tr>
+                <tr>
+                    <td>video_link</td>
+                    <td><a href={props.eachData.links.video_link}>{props.eachData.links.video_link}</a></td>
+                </tr>
+                <tr>
+                    <td>youtube_id</td>
+                    <td><a href={props.eachData.links.youtube_id}>{props.eachData.links.youtube_id}</a></td>
+                </tr>      
+            </td>
+          </tr>
+
           <tr>
             <td>details</td>
             <td>{props.eachData.details}</td>

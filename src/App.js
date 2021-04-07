@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ListData from "./ListData";
-import Popup from "./Popup";
+import ViewJson from "./ViewJson";
 import ViewTable from "./ViewTable";
+import Filter from "./Filter";
 import "./index.css";
 
 class App extends Component {
@@ -94,8 +94,8 @@ class App extends Component {
     return (
       <div>
         <header className="mainNav">
-          <h1 className="logo">spaceXData-UI</h1>
-          <h1 className="logo-sm">spaceXD-UI</h1>
+          <h1 className="logo">spaceXDataUI</h1>
+          <h1 className="logo-sm">sXdUI</h1>
           {
           (!this.state.trigger) 
           ?
@@ -108,7 +108,7 @@ class App extends Component {
           }
         </header>
 
-        <Popup
+        <Filter
           trigger={this.state.trigger}
           setTrigger={this.handleTrigger}
           handleFilter={this.handleFilter}
@@ -144,7 +144,7 @@ class App extends Component {
             ?(// eslint-disable-next-line
               this.state.filterData.map((eachData, index) => {
                 if (index === this.state.index && this.state.viewToggle) {
-                  return <ListData key={index} eachData={eachData}></ListData>;
+                  return <ViewJson key={index} eachData={eachData}></ViewJson>;
                 } 
                 else if (index === this.state.index && !this.state.viewToggle) 
                 {

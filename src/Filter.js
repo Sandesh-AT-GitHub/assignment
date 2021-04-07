@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Popup extends Component {
+class Filter extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,9 +18,9 @@ class Popup extends Component {
 
   render() {
     return this.props.trigger ? (
-      <div className="popupOuter">
-        <div className="popupInner">
-          <h2>FILTER</h2>
+      <div className="filterOuter">
+        <div className="filterInner">
+          <h2>Filter By</h2>
           <hr/>
           <form onSubmit={this.handleSubmit}>
 
@@ -63,4 +63,4 @@ class Popup extends Component {
     );
   }
 }
-export default Popup;
+export default Filter;

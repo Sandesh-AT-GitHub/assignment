@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListData(props) {
+function ViewJson(props) {
   return (
     <div className="viewData">
       <pre>{JSON.stringify(props.eachData, null, 2)}</pre>
@@ -8,4 +8,4 @@ function ListData(props) {
   );
 }
 
-export default ListData;
+export default ViewJson;
