@@ -22,8 +22,22 @@ This is a frontend web application, aimed at providing User-Interface for the JS
 ### Application screenshots:
 
 1. Large Devices:
-  * ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewJson.png)
-3. ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewJson.png)
+   * In this page we view the prettied Json data
+   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewTable.png)
+   * In this page we view the Json data in a table. Some rows and cols in table view might be empty, if its there then use the json view as null values are not printed into the table cell.
+   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/filter.png)
+   * In this a filter component will popup as we click on filter button. We can either select the values and filter out the data or close the filter component.
+2. Mobile Devices:
+   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/mobileDevice.png)
+   * This is the view of web app for mobile devices.
+3. Small Devices:
+   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/smallDevice.png)
+   * This is the view of web app for small devices.
 
+### Conclusion:
+
+* This was an exiting project. I learnt many things while doing this project like Heroku deployment, react-bootstrap, working with external API's and some frontend logic.
+Thank you   
 
 Link to [spaceXDataUI](https://spacexdata-ui.herokuapp.com/) deployed on `Heroku` 
