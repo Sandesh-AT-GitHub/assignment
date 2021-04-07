@@ -23,10 +23,10 @@ This is a frontend web application, aimed at providing User-Interface for the JS
 
 1. Large Devices:
 
-  ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewJson.png)
+  ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewTable.png)
    * In this page we view the prettied Json data
  
-  ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewTable.png)
+  ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/viewJson.png)
    * In this page we view the Json data in a table. Some rows and cols in table view might be empty, if its there then use the json view as null values are not printed into the table cell.
  
   ![alt text](https://github.com/Sandesh-AT-GitHub/task-app/blob/main/sreenshots/filter.png)
@@ -45,6 +45,13 @@ This is a frontend web application, aimed at providing User-Interface for the JS
 ### Conclusion:
 
 * This was an exiting project. I learnt many things while doing this project like Heroku deployment, react-bootstrap, working with external API's and some frontend logic.
-Thank you   
+
+Thanks to,
+* [Stack Overflow](https://stackoverflow.com/)
+* [Medium](https://stackoverflow.com/)
+* [CSS Tricks](https://css-tricks.com/)
+* [w3schools](https://www.w3schools.com/)
+* [some channels in youtube](https://www.youtube.com/)
+* [reactjs doc](https://reactjs.org/)
 
 Link to [spaceXDataUI](https://spacexdata-ui.herokuapp.com/) deployed on `Heroku` 
