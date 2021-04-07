@@ -18,32 +18,43 @@ class Popup extends Component {
 
   render() {
     return this.props.trigger ? (
-      <div className="outer">
-        <div className="inner">
-          <button onClick={() => this.props.setTrigger(false)}>close</button>
+      <div className="popupOuter">
+        <div className="popupInner">
+          <h2>FILTER</h2>
+          <hr/>
           <form onSubmit={this.handleSubmit}>
-            <label for="cb1">Launch Success</label>
-            <input type="radio" name="input1" value="true" />
-            True
-            <input type="radio" name="input1" value="false" />
-            False
-            <input type="radio" name="input1" value="null" />
-            Null
-            <br />
-            <label>Land Success</label>
-            <input type="radio" name="input2" value="true" />
-            True
-            <input type="radio" name="input2" value="false" />
-            False
-            <input type="radio" name="input2" value="null" />
-            Null
-            <br />
-            <label>Launch Year</label>
-            <input type="number" name="input3" placeholder="filter3" />
-            <br />
-            <button type="submit" value="Submit">
-              submit
-            </button>
+
+            <div className="group">
+              <label class="groupLabel" for="cb1">Launch Success</label>
+                <div className="groupInput">
+                <input className="start" type="radio" name="input1" value="true" />
+                True
+                <input type="radio" name="input1" value="false" />
+                False
+                </div>
+            </div>
+
+            <div className="group">
+              <label className="groupLabel">Land Success</label>
+                <div className="groupInput">
+                <input className="start" type="radio" name="input2" value="true" />
+                True
+                <input type="radio" name="input2" value="false" />
+                False
+                </div>
+            </div>
+
+            <div className="group">
+              <label class="groupLabel">Launch Year</label>
+                <div className="groupInput">
+                <input className="start" type="number" name="input3" placeholder="Enter launch year" />
+                </div>
+            </div>
+            
+            <div className="groupBtn">
+              <button onClick={() => this.props.setTrigger(false)}>close</button>
+              <button type="submit" value="Submit">submit</button>
+            </div>
           </form>
         </div>
       </div>

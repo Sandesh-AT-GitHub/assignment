@@ -8,6 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      loading:true,
       data: [],
       filterData: [],
       index: 0,
@@ -24,9 +25,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+
     fetch("https://api.spaceXdata.com/v3/launches?limit=" + this.state.limit)
       .then((response) => response.json())
-      .then((apiData) => this.setState({ data: apiData, filterData: apiData }));
+      .then((apiData) => this.setState({ data: apiData, filterData: apiData,loading:false }));
   }
 
   handleTrigger = () => {
@@ -91,35 +93,51 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="mainNav">
-          <h1 className="mainNav logo">LOGO</h1>
-          {(!this.state.trigger) 
-          ?(
-            <div>
-              <button onClick={this.reset}>Reset</button>
-              <button onClick={this.handleTrigger}>Filter</button>
-            </div>
-          ) 
-          :(" ")}
-        </nav>
+        <header className="mainNav">
+          <h1 className="logo">spaceXData-UI</h1>
+          <h1 className="logo-sm">spaceXD-UI</h1>
+          {
+          (!this.state.trigger) 
+          ?
+          (<div className="btn">
+              <button className="resetBtn" onClick={this.reset}>Reset</button>
+              <button className="filterBtn" onClick={this.handleTrigger}>Filter</button>
+            </div>) 
+          :
+          (" ")
+          }
+        </header>
+
         <Popup
           trigger={this.state.trigger}
           setTrigger={this.handleTrigger}
           handleFilter={this.handleFilter}
         />
-        <div>
-          <nav className="bodyNav">
+
+        <div class="mainBody">
+          
+          <nav>
           {
             (this.state.filterData.length)
-            ?<div>
-              <button onClick={this.handleClickLeft}>{"<"}</button>
-              <span>{this.state.index + 1} of {this.state.filterData.length}</span>
-              <button onClick={this.handleClickRight}>{">"}</button>
-              <button className="viewButton" onClick={this.changeView}>view {this.state.viewToggle ? "table" : "json"}</button>
+            ?<div className="bodyNavbar">
+              <div className="pageNav">
+              <button className="rightBtn" onClick={this.handleClickLeft}>{"<"}</button>
+              <span className="pageNum" >{this.state.index + 1} of {this.state.filterData.length}</span>
+              <button className="leftBtn" onClick={this.handleClickRight}>{">"}</button>
+              </div>
+              <button className="viewBtn" onClick={this.changeView}>view {this.state.viewToggle ? "table" : "json"}</button>
             </div>
             :" "
           }           
           </nav>
+
+          <div>
+          {this.state.loading
+          ?
+          <div className="viewNone">
+            <h6>loading....</h6>
+          </div>
+          :
           <div>
             {this.state.filterData.length 
 
@@ -128,17 +146,28 @@ class App extends Component {
                 if (index === this.state.index && this.state.viewToggle) {
                   return <ListData key={index} eachData={eachData}></ListData>;
                 } 
-                else if (index === this.state.index && this.state.viewToggle) 
+                else if (index === this.state.index && !this.state.viewToggle) 
                 {
                   return <ViewTable key={index} eachData={eachData} />;
                 }
               })
             )
 
-            :(<h1>"NO DATA!.Try with other filter options or press reset."</h1>)
-
+            :
+            (<div className="viewNone">
+              <h6>
+                <ul>
+                  <h1>ERROR</h1>
+                  <li>* No data! for the given filter.</li>
+                  <li>* Change the filters.</li>
+                  <li>* Or press reset button.</li>
+                </ul>
+              </h6>
+            </div>)
             }
-            
+
+          </div>
+          }
           </div>
         </div>
       </div>

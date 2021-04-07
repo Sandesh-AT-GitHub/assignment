@@ -1,10 +1,14 @@
 body {
   margin: 0;
+  padding: 0 12px;
+  width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -22,20 +26,152 @@ code {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  padding: 12px;
+  box-shadow: 3px 6px 9px;
+  border-radius:5px;
+  margin-top: 12px;
 }
 
-.logo {
-  margin-right: auto;
+.mainNav .logo {
+  margin: auto auto auto 30px;
+  text-decoration: underline;
 }
 
-.bodyNav {
+.mainNav .logo-sm{
+  display: none;
+}
+
+.mainNav .btn{
+  padding: 0;
+}
+
+.mainNav .btn .resetBtn,.filterBtn{
+  margin:auto 2px;
+  background:none;
+  border: 2px solid black;
+  border-radius: 6px;
+  width:100px;
+  height: 30px;
+}
+
+.mainBody{
+  margin:12px auto;
+  box-shadow: 3px 6px 9px;
+  border-radius:5px;
+}
+
+.bodyNavbar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border:2px solid black;
+  border-bottom: 0px;
+  border-radius: 8px 8px 0px 0px;
+  padding: 12px;
+  
 }
 
-.viewButton {
+.pageNav{
+  border: 2px solid black;
+  border-radius: 6px;
+  height: 30px;
+}
+
+.rightBtn{
+background: none;
+border: none;
+}
+
+.pageNum{ 
+
+}
+
+.leftBtn{
+  background: none;
+  border: none;
+}
+
+.viewBtn {
   margin-left: auto;
+  background:none;
+  border: 2px solid black;
+  border-radius: 6px;
+  width:100px;
+  height: 30px;
 }
 
+.viewData{
+  background-color:white;
+  padding: 12px;
+  border: 2px solid black;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.viewNone{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewNone h6{
+  font-size: 3rem;
+}
+
+.viewNone h6 ul{
+  list-style: none;
+}
+
+@media only screen and (max-width:600px)
+{
+.mainNav{
+  all:unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border:2px solid black;
+  margin-top: 12px;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 3px 6px 9px;
+} 
+
+.mainNav .logo{
+  all:unset;
+  font-size: 40px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.mainNav .btn{
+  padding: 12px;
+}
+
+.mainNav .resetBtn,.filterBtn{
+  margin:auto 6px ;
+}
+}
+
+@media only screen and (max-width:320px)
+{
+.mainNav .btn .resetBtn,.filterBtn{
+  margin:auto 6px ;
+  width: 60px;
+}
+
+.mainNav .logo{
+  display: none;
+}
+
+.mainNav .logo-sm{
+  display: block;
+  text-decoration: underline;
+}
+
+.viewNone h6{
+  font-size: 1rem;
+}
+
+}

@@ -2,7 +2,7 @@ import React from "react";
 
 function ListData(props) {
   return (
-    <div>
+    <div className="viewData">
       <pre>{JSON.stringify(props.eachData, null, 2)}</pre>
     </div>
   );

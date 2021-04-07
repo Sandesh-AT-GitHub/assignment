@@ -1,0 +1,59 @@
+.popupOuter{
+    position: fixed;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popupInner{
+    position: relative;
+    background-color: white;
+    padding: 24px;
+    width: 100%;
+    max-width:260px ;
+    border-radius: 5px;
+    
+}
+
+.popupInner h2{
+    text-align: center;
+}
+
+.group{
+    display: flex;
+    flex-direction: column;   
+}
+
+.groupLabel{
+font-weight: bold;  
+}
+
+.groupInput{
+    margin-bottom: 10px;
+}
+
+.groupInput Input{
+    margin:0px 6px ;
+}
+
+.groupInput .start
+{
+    margin-left: 0px;
+}
+
+.groupBtn{
+    display: flex;
+    justify-content: center;
+}
+
+.groupBtn button{
+    margin: 6px;
+    background: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 100px;
+}
