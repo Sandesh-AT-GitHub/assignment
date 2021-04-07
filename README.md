@@ -7,7 +7,7 @@ This is a frontend web application, aimed at providing User-Interface for the JS
 App build-process:
 
 1. Planning 
-...First and most important step is about reading and knowing about the project your are going to work with,like requirement specification and deadline of the project etc. Then choose the app-stack that you are familiar with and appropriate for the project. After this setup a development environment for the project based on the project.
+⋅⋅⋅First and most important step is about reading and knowing about the project your are going to work with,like requirement specification and deadline of the project etc. Then choose the app-stack that you are familiar with and appropriate for the project. After this setup a development environment for the project based on the project.
 2. Designing
   * Planning out the UI for the project. Make a base plan and go on improvising as you build the project.
 3. 
