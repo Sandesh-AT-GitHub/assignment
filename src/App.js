@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ViewJson from "./ViewJson";
-import ViewTable from "./ViewTable";
-import Filter from "./Filter";
+import ViewJson from "./Component/ViewJson";
+import ViewTable from "./Component/ViewTable";
+import Filter from "./Component/Filter";
 import "./index.css";
 
 class App extends Component {
@@ -13,12 +13,13 @@ class App extends Component {
       data: [],
       filterData: [],
       index: 0,
-      trigger: false,
-      viewToggle: true
+      filterPageToggler: false,
+      viewPageToggler: true
     };
+
     this.handleClickRight = this.handleClickRight.bind(this);
     this.handleClickLeft = this.handleClickLeft.bind(this);
-    this.handleTrigger = this.handleTrigger.bind(this);
+    this.handleFilterPageToggler= this.handleFilterPageToggler.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.changeView = this.changeView.bind(this);
     this.reset = this.reset.bind(this);
@@ -29,65 +30,58 @@ class App extends Component {
     fetch("https://api.spaceXdata.com/v3/launches?limit=" + this.state.limit)
       .then((response) => response.json())
       .then((apiData) => this.setState({ data: apiData, filterData: apiData,loading:false }));
+
   }
 
-  handleTrigger = () => {
-    this.setState((prevTrigger) => {
-      let currentTrigger = !prevTrigger.trigger;
-      if (currentTrigger) {
-        return { trigger: true };
-      } else {
-        return { trigger: false };
-      }
-    });
+  handleFilterPageToggler = () => {
+
+    this.setState({ filterPageToggler: !this.state.filterPageToggler })
+
   };
 
   handleFilter = (formData, launchSuccess, landSuccess, launchYear) => {
-    console.log(launchSuccess == null);
+
     if (launchSuccess || landSuccess || launchYear) {
       let url ="https://api.spaceXdata.com/v3/launches?limit="+this.state.limit+"&launch_success="+launchSuccess+"&land_success="+landSuccess+"&launch_year="+launchYear;
-      console.log(url);
       fetch(url)
         .then((response) => response.json())
         .then((data) => this.setState({ filterData: data,index:0 }));
     }
-    this.handleTrigger();
+
+    this.handleFilterPageToggler();
+
   };
 
   handleClickLeft= () => {
-    this.setState((prevState) => {
-      if (prevState.index <= 0)
-        this.setState({ index: this.state.filterData.length - 1 });
-      let currState = prevState.index;
-      console.log(currState);
-      return { index: --currState };
-    });
-  }
-
-  handleClickRight() {
     this.setState((prevState) => {
       if (prevState.index >= this.state.filterData.length - 1)
         this.setState({ index: 0 });
 
       let currState = prevState.index;
-      console.log(currState);
       return { index: ++currState };
     });
   }
 
-  changeView() {
-    this.setState((prevView) => {
-      let currentView = !prevView.viewToggle;
-      if (currentView) {
-        return { viewToggle: true };
-      } else {
-        return { viewToggle: false };
-      }
+  handleClickRight=()=> {
+    this.setState((prevState) => {
+      if (prevState.index <= 0)
+        this.setState({ index: this.state.filterData.length - 1 });
+      let currState = prevState.index;
+      return { index: --currState };
     });
+
+  }
+
+  changeView=()=> {
+
+    this.setState({viewPageToggler: !this.state.viewPageToggler})
+
   }
 
   reset = () => {
+
     this.setState({filterData:this.state.data})
+
   }
 
   render() {
@@ -97,20 +91,17 @@ class App extends Component {
           <h1 className="logo">spaceXDataUI</h1>
           <h1 className="logo-sm">sXdUI</h1>
           {
-          (!this.state.trigger) 
-          ?
+          !this.state.filterPageToggler &&
           (<div className="btn">
               <button className="resetBtn" onClick={this.reset}>Reset</button>
-              <button className="filterBtn" onClick={this.handleTrigger}>Filter</button>
-            </div>) 
-          :
-          (" ")
+              <button className="filterBtn" onClick={this.handleFilterPageToggler}>Filter</button>  
+          </div>)
           }
         </header>
 
         <Filter
-          trigger={this.state.trigger}
-          setTrigger={this.handleTrigger}
+          filterPageToggler={this.state.filterPageToggler}
+          handleFilterPageToggler={this.handleFilterPageToggler}
           handleFilter={this.handleFilter}
         />
 
@@ -121,53 +112,44 @@ class App extends Component {
             (this.state.filterData.length)
             ?<div className="bodyNavbar">
               <div className="pageNav">
-              <button className="rightBtn" onClick={this.handleClickLeft}>{"<"}</button>
+              <button className="rightBtn" onClick={this.handleClickRight}>{"<"}</button>
               <span className="pageNum" >{this.state.index + 1} of {this.state.filterData.length}</span>
-              <button className="leftBtn" onClick={this.handleClickRight}>{">"}</button>
+              <button className="leftBtn" onClick={this.handleClickLeft}>{">"}</button>
               </div>
-              <button className="viewBtn" onClick={this.changeView}>view {this.state.viewToggle ? "table" : "json"}</button>
+              <button className="viewBtn" onClick={this.changeView}>view {this.state.viewPageToggler ? "table" : "json"}</button>
             </div>
             :" "
           }           
           </nav>
 
           <div>
-          {this.state.loading
-          ?
-          <div className="viewNone">
-            <h6>loading....</h6>
-          </div>
-          :
-          <div>
-            {this.state.filterData.length 
+            {this.state.loading
+              ?<div className="viewNone">
+                <h6>loading....</h6>
+              </div>
+              : <div>
+                  {this.state.filterData.length
 
-            ?(// eslint-disable-next-line
-              this.state.filterData.map((eachData, index) => {
-                if (index === this.state.index && this.state.viewToggle) {
-                  return <ViewJson key={index} eachData={eachData}></ViewJson>;
-                } 
-                else if (index === this.state.index && !this.state.viewToggle) 
-                {
-                  return <ViewTable key={index} eachData={eachData} />;
+                  ?(this.state.viewPageToggler
+                    ? 
+                      <ViewJson  eachData={this.state.filterData[this.state.index]}/>
+                    :
+                      <ViewTable  eachData={this.state.filterData[this.state.index]} />
+                    )
+                  :
+                  (<div className="viewNone">
+                    <h6>
+                      <ul>
+                        <h1>ERROR</h1>
+                        <li>* No data! for the given filter.</li>
+                        <li>* Change the filters.</li>
+                        <li>* Or press reset button.</li>
+                      </ul>
+                    </h6>
+                  </div>)
                 }
-              })
-            )
-
-            :
-            (<div className="viewNone">
-              <h6>
-                <ul>
-                  <h1>ERROR</h1>
-                  <li>* No data! for the given filter.</li>
-                  <li>* Change the filters.</li>
-                  <li>* Or press reset button.</li>
-                </ul>
-              </h6>
-            </div>)
+              </div>
             }
-
-          </div>
-          }
           </div>
         </div>
       </div>

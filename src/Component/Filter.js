@@ -1,28 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const Filter = (props) =>  {
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.handleFilter(
-      e.target,
-      e.target.input1.value,
-      e.target.input2.value,
-      e.target.input3.value
-    );
-  }
+    const handleSubmit=(e)=> {
+        e.preventDefault();
+        props.handleFilter(
+          e.target,
+          e.target.input1.value,
+          e.target.input2.value,
+          e.target.input3.value
+        );
+      }
 
-  render() {
-    return this.props.trigger ? (
+    return props.filterPageToggler ? (
       <div className="filterOuter">
         <div className="filterInner">
           <h2>Filter By</h2>
           <hr/>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={handleSubmit}>
 
             <div className="group">
               <label class="groupLabel" for="cb1">Launch Success</label>
@@ -52,7 +47,7 @@ class Filter extends Component {
             </div>
             
             <div className="groupBtn">
-              <button onClick={() => this.props.setTrigger()}>close</button>
+              <button onClick={() => props.handleFilterPageToggler()}>close</button>
               <button type="submit" value="Submit">submit</button>
             </div>
           </form>
@@ -62,5 +57,5 @@ class Filter extends Component {
       " "
     );
   }
-}
+
 export default Filter;

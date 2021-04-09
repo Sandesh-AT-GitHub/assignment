@@ -376,7 +376,9 @@ function ViewTable(props) {
           </tr>
           <tr>
             <td>timeline</td>
-            <td>{props.eachData.timeline.webcast_liftoff}</td>
+            <td>
+            {props.eachData.timeline?.webcast_liftoff ?? "empty"}
+            </td>
           </tr>
           <tr>
             <td>crew</td>
@@ -386,6 +388,6 @@ function ViewTable(props) {
       </Table>
     </div>
   );
-}
 
+        }
 export default ViewTable;
